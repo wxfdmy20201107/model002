@@ -54,7 +54,7 @@ if st.button("点击预测"):
 
     # 获取第二个值
     second_value = X_text2.iloc[0, 1]
-    Y2 = 3*first_value+126*second_value
+    Y2 = 3*int(first_value)+126*int(second_value)
     if Y2 < 226.5:
         outcome2 = "存活"
     elif Y2 >= 226.5:
