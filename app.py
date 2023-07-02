@@ -47,7 +47,7 @@ if st.button("点击预测"):
         outcome1 = "未知"
    
     # Get prediction2
-    Y2 = 3*X_text[0]+126*X_text[1]
+    Y2 = 3*X_text["age"]+126*X_text["drug"]
     if Y2 < 226.5:
         outcome2 = "存活"
     elif Y2 >= 226.5:
