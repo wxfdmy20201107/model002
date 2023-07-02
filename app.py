@@ -10,7 +10,7 @@ def load_data():
 @st.cache_data  # 添加缓存器
 def train_model():
     df = load_data()
-    X = df[["gender", "age", "drug", "otherdisease"]]
+    X = df[["age", "drug", "otherdisease"]]
     y = df["flag"]
     clf = LogisticRegression()
     clf.fit(X, y)
@@ -22,10 +22,7 @@ df = load_data()
 clf = train_model()
 
 # Title
-st.header("耐药肺克病人死亡风险评估")
-
-# Dropdown input
-gender = st.selectbox("选择性别",("0","1"))
+st.header("肺克感染病人死亡风险评估")
 
 # Input bar 2
 age = st.number_input("输入年龄")
@@ -37,8 +34,8 @@ otherdisease = st.selectbox("是否存在基础疾病",("0","1"))
 # If button is pressed
 if st.button("点击预测"):
     # Store inputs into dataframe
-    X_text = pd.DataFrame([[gender, age, drug,otherdisease]],
-                     columns=["gender", "age", "drug","otherdisease"])
+    X_text = pd.DataFrame([[age, drug,otherdisease]],
+                     columns=["age", "drug","otherdisease"])
 
     # Get prediction
     Y = clf.predict(X_text)[0]
@@ -50,7 +47,7 @@ if st.button("点击预测"):
         outcome = "未知"
 
     # Output prediction
-    st.text(f"该耐药肺克病人是否死亡？答案是： {outcome}")
+    st.text(f"该肺克感染病人是否死亡？答案是： {outcome}")
 
 
 
