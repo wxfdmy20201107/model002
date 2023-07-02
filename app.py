@@ -37,17 +37,27 @@ if st.button("点击预测"):
     X_text = pd.DataFrame([[age, drug,otherdisease]],
                      columns=["age", "drug","otherdisease"])
 
-    # Get prediction
-    Y = clf.predict(X_text)[0]
-    if Y == 0:
-        outcome = "存活"
-    elif Y == 1:
-        outcome = "死亡"
+    # Get prediction1
+    Y1 = clf.predict(X_text)[0]
+    if Y1 == 0:
+        outcome1 = "存活"
+    elif Y1 == 1:
+        outcome1 = "死亡"
     else:
-        outcome = "未知"
-
+        outcome1 = "未知"
+   
+    # Get prediction2
+    Y2 = 3*age+126*drug
+    if Y2 < 226.5:
+        outcome2 = "存活"
+    elif Y2 >= 226.5:
+        outcome2 = "死亡"
+    else:
+        outcome2 = "未知"
+   
     # Output prediction
-    st.text(f"该肺克感染病人是否死亡？答案是： {outcome}")
+    st.text(f"该肺克感染病人是否死亡？机器学习的答案是： {outcome1}")
+    st.text(f"该肺克感染病人是否死亡？传统方法的答案是： {outcome2}")
 
 
 
