@@ -10,7 +10,7 @@ def load_data():
 @st.cache_data  # 添加缓存器
 def train_model():
     df = load_data()
-    X = df[["age", "drug", "otherdisease"]]
+    X = df[["age", "drug"]]
     y = df["flag"]
     clf = LogisticRegression()
     clf.fit(X, y)
