@@ -49,7 +49,12 @@ if st.button("点击预测"):
     # Get prediction2
     X_text2 = pd.DataFrame([[age, drug]],
                      columns=["age", "drug"])
-    Y2 = 3*X_text2[age]+126*X_text2[drug]
+    # 获取第一个值
+    first_value = X_text2.iloc[0, 0]
+
+    # 获取第二个值
+    second_value = X_text2.iloc[0, 1]
+    Y2 = 3*first_value+126*second_value
     if Y2 < 226.5:
         outcome2 = "存活"
     elif Y2 >= 226.5:
