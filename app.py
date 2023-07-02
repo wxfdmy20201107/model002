@@ -29,13 +29,13 @@ age = st.number_input("输入年龄")
 
 # Dropdown input
 drug = st.selectbox("是否多次使用抗生素", ("0", "1"))
-otherdisease = st.selectbox("是否存在基础疾病",("0","1"))
+st.selectbox("是否存在基础疾病",("0","1"))
 
 # If button is pressed
 if st.button("点击预测"):
     # Store inputs into dataframe
-    X_text = pd.DataFrame([[age, drug,otherdisease]],
-                     columns=["age", "drug","otherdisease"])
+    X_text = pd.DataFrame([[age, drug]],
+                     columns=["age", "drug"])
 
     # Get prediction1
     Y1 = clf.predict(X_text)[0]
